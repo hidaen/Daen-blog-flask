@@ -1,0 +1,31 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div id="results">
+  <div id="results-data">
+      {% if image_url %}
+        <img src="{{image_url}}">
+      {% endif %}
+      {% if data != '' %}
+        {% for line in data %}
+            <div class="content">
+                <h2><a href="/review/p={{line[0]}}" class="a-line">{{line[3]}}</a></h2>
+                <p class="p-time">{{line[1]}}</p>
+                {{line[2]|replace('\r\n','<br>')|replace('\r{2,}','<br>')|replace('\n{2,}','<br>')|safe}}
+                <br>
+                <br>
+                <a class="a-color" href="/review/p={{line[0]}}">
+                    >>
+                    阅读全文
+                </a>
+            </div>
+            <br><hr>
+        {% endfor %}
+      {% endif %}
+  </div>
+</div>
+
+<br><br>
+
+{% endblock %}

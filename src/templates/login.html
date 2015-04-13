@@ -1,0 +1,16 @@
+{% extends "_base.html" %}
+
+{% block content %}
+<div class="input-lg">
+<form action="login" id="inputOther" method="post">
+        <h3>登录信息</h3>
+        {% if text %}
+            <span class="span-text">{{text}}</span><br>
+        {% endif %}
+        <input name="loginuser" class="input-ll" type="text" placeholder="邮箱/昵称/username" /><br><br>
+        <input name="passwd" type="password" class="input-ll" placeholder="passwd"  /><br><br>
+        <input type="submit" class="input-button btn btn-success" value="登 录" />
+</form>
+</div>
+
+{% endblock %}

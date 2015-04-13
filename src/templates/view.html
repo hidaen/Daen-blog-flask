@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div id="results">
+  <div id="results-data">
+      {% if data != '' %}
+            <div class="content">
+                <h2 style="text-align:center">{{data[3]}}</h2>
+                <p class="p-time p-time-view">{{data[1]}}</p>
+                {{data[2]|replace('\r\n','<br>')|replace('\r{2,}','<br>')|replace('\n{2,}','<br>')|safe}}
+            </div>
+            <br><hr>
+      {% endif %}
+  </div>
+</div>
+
+{% endblock %}

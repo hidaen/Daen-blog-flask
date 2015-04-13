@@ -1,0 +1,177 @@
+<html>
+  <head>
+    <meta charset = 'UTF-8'>
+    {% if title %}
+      <title>{{title}} | daen</title>
+    {% else %}
+      <title>daen | about</title>
+    {%endif%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- styles -->
+<!--     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
+
+    <style type="text/css">
+      .container {
+        max-width: 400px;
+        padding-top: 50px;
+        text-align: center;
+        margin-right:auto;
+        margin-left:auto;
+      }
+      .zui-top {
+        position: fixed;
+        left: 0;
+        top: 0;
+        z-index: 20;
+        width: 100%;
+        height: 45px;
+        background: #0666c5;
+        background-color: #0767c8;
+      }
+      .zui-topc {
+        width: 960px;
+        margin: 10px auto;
+        clear: both;
+      }
+      .zui-top-index {
+        width: 100px;
+        display: inline;
+        color: #f2f4f5;
+        font-size: 25px;
+        float: left;
+        position: relative;
+      }
+      .zui-top-user {
+        width: 100px;
+        display: inline;
+        color: #f2f4f5;
+        font-size: 18px;
+        float: right;
+        position: relative;
+      }
+      .content {
+        width: 800px;
+        text-align: left;
+        margin-right:auto;
+        margin-left:auto;
+      }
+      .view-content {
+        width: 800px;
+        text-align: content;
+        margin-right:auto;
+        margin-left:auto;
+      }
+      a:link,a:visited{
+        text-decoration:none;
+      }
+      .about-p {
+        font-size: 20px;
+        text-align:left;
+        padding: auto 20px;
+      }
+      .about-c {
+        width: 800px;
+        text-align: content;
+        margin-right:auto;
+        margin-left:auto;
+      }
+      .a-line {
+        color: #222;
+        text-decoration: none;
+      }
+      .a-line a:hover {
+        color: #069;
+        text-decoration: none;
+      }
+      .a-color {
+        color: #069;
+        text-decoration: none;
+      }
+      .p-color {
+        color:#069;
+      }
+      .span-text {
+        color:red;
+      }
+      .p-time {
+        color: #069;
+        font-size: 10px;
+      }
+      .p-time-view {
+        text-align: right;
+      }
+      .c-body {
+        padding-top: 48px;
+        max-width: 960px;
+        margin: 48px auto;
+        clear: both;
+        text-align: center;
+      }
+
+      /*test css */
+      .form-control{display:block;width:500px;height:50px;padding:6px 12px;font-size:20px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:1px solid #ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+              margin-right:auto;
+        margin-left:auto;}
+        .input-lg {
+          display:block;width:500px;height:300px;padding:6px 12px;font-size:20px;line-height:1.42857143;color:#555;background-color:#fff;background-image:none;border:5px solid #ccc;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);box-shadow:inset 0 1px 1px rgba(0,0,0,.075);-webkit-transition:border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+              margin-right:auto;
+        margin-left:auto;
+        }
+        .input-ll {
+           width:200px;height:30px;padding:6px 2px;background-image:none;border:1px solid #ccc;font-size:18px;
+        }
+        .input-button {
+          width:100px;
+        }
+
+      /*button */
+      .btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px}
+      .btn-success{color:#fff;background-color:#5cb85c;border-color:#4cae4c}
+      .about {
+        text-align: center;
+      }
+
+      .foot {
+        background: #f5f6f5;
+        border-top: 1px solid #ebebeb;
+        text-align: center;
+        height: 68px;
+        line-height: 22px;
+        margin-top: 40px;
+      }
+    </style>
+
+  </head>
+  <body>
+  <!-- top -->
+    <div class="zui-top">
+      <div class="zui-topc">
+        <a href="/index" class="zui-top-index">index</a>
+        <a href="/image" class="zui-top-index">image</a>
+<!--         <a href="/index" class="zui-top-index">git</a> -->
+        <a href="/about" class="zui-top-index">about</a>
+        {%if username %}
+          <a href="/user/{{username}}" class="zui-top-user" role="button" aria-haspopup="true" aria-activedescendant>
+          <img src="{{ url_for('static', filename='img/daen.jpg') }}">
+          <span>{{username}}</span>
+          </a>
+        {% else %}
+          <a href="/login" class="zui-top-user" role="button" aria-haspopup="true" aria-activedescendant>
+          <img src="{{ url_for('static', filename='img/daen.jpg') }}">
+          <span>Login</span>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="c-body">
+      <!-- child templates -->
+      {% block content %}{% endblock %}
+    </div>
+
+    <div class="foot">
+      <a href="/index">hidaen</a> | <a href="/about">about daen</a> | <a href="/login">login</a>
+      <p>Copyright ©1988-2015 HIDAEN Corporation, All Rights Reserved</p>
+    </div>
+  </body>
+</html>
