@@ -1,2 +1,5 @@
 flask
+Jinja2
 sqlalchemy
+uwsgi
+nginx
